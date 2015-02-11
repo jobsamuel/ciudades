@@ -1,0 +1,29 @@
+{
+  "name": "ciudades",
+  "version": "0.0.1",
+  "description": "un simple experimento con ReactJS.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jobsamuel/ciudades.git"
+  },
+  "keywords": [
+    "demo",
+    "reactjs"
+  ],
+  "author": "Jobsamuel Núñez <jobsamuel.nunez@outlook.com> (http://jobsamuel.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jobsamuel/ciudades/issues"
+  },
+  "homepage": "https://github.com/jobsamuel/ciudades",
+  "dependencies": {
+    "body-parser": "^1.11.0",
+    "express": "^4.11.2",
+    "path": "^0.11.14"
+  }
+}
