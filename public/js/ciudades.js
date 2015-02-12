@@ -1,107 +1,80 @@
-var CommentBox = React.createClass({
-	loadCommentsFromServer: function() {
-	    $.ajax({
-		    url: this.props.url,
-		    dataType: 'json',
-		    success: function(data) {
-		   		this.setState({data: data});
-		    }.bind(this),
-		    error: function(xhr, status, err) {
-		    	console.error(this.props.url, status, err.toString());
-		    }.bind(this)
-	    });
-	},
-	handleCommentSubmit: function(comment) {
-		var comments = this.state.data;
-    	var newComments = comments.concat([comment]);
-    	this.setState({data: newComments});
-	    $.ajax({
-	      url: this.props.url,
-	      dataType: 'json',
-	      type: 'POST',
-	      data: comment,
-	      success: function(data) {
-	        this.setState({data: data});
-	      }.bind(this),
-	      error: function(xhr, status, err) {
-	        console.error(this.props.url, status, err.toString());
-	      }.bind(this)
-	    });
-  	},
+var Estados = React.createClass({
 	getInitialState: function() {
-		return {data: []};
+		return {n:0}
 	},
-	componentDidMount: function() {
-	    this.loadCommentsFromServer();
-	    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+	nextState: function() {
+		if (this.state.n >= 23) {
+			this.setState({n: 0});
+		} else {
+			this.setState({n: this.state.n + 1});
+		}
+		
 	},
 	render: function() {
+		console.log(this.state.n);
 		return (
-			<div className="commentBox"> 
-				<h1>Comentarios</h1>
-				<CommentList data={this.state.data} />
-				 <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+			<div className="estados"> 
+				<button type="button" onClick={this.nextState}> Siguiente </button>
+				<h1>{this.props.data[this.state.n].estado}</h1>
+				<Ciudades data={this.props.data[this.state.n].ciudades} />
+				<Municipios data={this.props.data[this.state.n].municipios} />
 			</div>
 		);
 	}
 });
 
-var CommentList = React.createClass({
+var Municipios = React.createClass({
 	render: function() {
-		var commentNodes = this.props.data.map(function (comment) {
+		var listaDeMunicipios = this.props.data.map(function (municipio) {
       		return (
-		        <Comment author={comment.author}>
-		          {comment.text}
-		        </Comment>
+      			<li> {municipio.municipio} </li>
       		);
     	});
     	return (
-	      <div className="commentList">
-	        {commentNodes}
-	      </div>
+    		<div>
+    			<h3> Municipios </h3>
+		      	<ul className="listaDeMunicipios">
+		        	{listaDeMunicipios}
+		      	</ul>
+	      	</div>	
 	    );
 	}
 });
 
-var CommentForm = React.createClass({
-	handleSubmit: function(e) {
-	    e.preventDefault();
-	    var author = this.refs.author.getDOMNode().value.trim();
-	    var text = this.refs.text.getDOMNode().value.trim();
-	    if (!text || !author) {
-	      return;
-	    }
-	    this.props.onCommentSubmit({author: author, text: text});
-	    this.refs.author.getDOMNode().value = '';
-	    this.refs.text.getDOMNode().value = '';
+var Ciudades = React.createClass({
+	validateCity: function(city) {
+		if (city) {
+			return city.map(function (ciudad) {
+	      		return (
+	      			<h5> {ciudad} </h5>
+	      		);
+    		});
+		} else {
+			return (
+	      			<h5> N/A </h5>
+	      		);
+		}
 	},
 	render: function() {
 		return (
-			<form className="commentForm" onSubmit={this.handleSubmit}>
-		        <input type="text" placeholder="Tu nombre" ref="author" />
-		        <input type="text" placeholder="Escribe algo..." ref="text" />
-		        <input type="submit" value="Enviar" />
-		    </form>
-		);
+			<div>
+				<h3> Ciudades </h3>
+				{this.validateCity(this.props.data)} 
+			</div>	
+		)
 	}
 });
 
-var converter = new Showdown.converter();
-var Comment = React.createClass({
-	render: function() {
-		var rawMarkup = converter.makeHtml(this.props.children.toString());
-		return (
-			<div className="comment">
-				<h2 className="commentAuthor">
-					{this.props.author}
-				</h2>
-				<span dangerouslySetInnerHTML={{__html: rawMarkup}} />
-			</div>
-		);
-	}
+$.ajax({
+	url: "venezuela.json",
+	dataType: 'json',
+	success: function(data) {
+		console.log(data);
+	    React.render(<Estados data={data} />, 
+	    	document.getElementById('content')
+				);
+	}.bind(this),
+	error: function(xhr, status, err) {
+		console.error(this.props.url, status, err.toString());
+	}.bind(this)
 });
-
-React.render(
-	<CommentBox url="comments.json" pollInterval={2000} />, 
-	document.getElementById('content')
-);
