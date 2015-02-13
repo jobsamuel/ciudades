@@ -1,65 +1,108 @@
-var Estados = React.createClass({
+var Venezuela = React.createClass({
 	getInitialState: function() {
 		return {n:0}
 	},
-	nextState: function() {
-		if (this.state.n >= 23) {
+	goForward: function() {
+		if (this.state.n >= (this.props.data.length - 1) ) {
 			this.setState({n: 0});
 		} else {
 			this.setState({n: this.state.n + 1});
 		}
-		
+	},
+	goBack: function() {
+		if (this.state.n == 0) {
+			this.setState({n: this.props.data.length - 1});
+		} else {
+			this.setState({n: this.state.n - 1});
+		}
 	},
 	render: function() {
 		console.log(this.state.n);
 		return (
-			<div className="estados"> 
-				<button type="button" onClick={this.nextState}> Siguiente </button>
-				<h1>{this.props.data[this.state.n].estado}</h1>
-				<Ciudades data={this.props.data[this.state.n].ciudades} />
+			<div className="venezuela">
+			 	<div>
+			 		<h1>{this.props.data[this.state.n].estado}</h1>
+			 		<button type="button" onClick={this.goBack}>Anterior</button>
+					<button type="button" onClick={this.goForward}>Siguiente</button>
+				</div>
 				<Municipios data={this.props.data[this.state.n].municipios} />
+				<Parroquias data={this.props.data[this.state.n].municipios} />
 			</div>
-		);
+		)
 	}
 });
 
 var Municipios = React.createClass({
+	getInitialState: function(){
+		return {m:false}
+	},
+	details: function() {
+		this.setState({m: !this.state.m});
+	},
 	render: function() {
-		var listaDeMunicipios = this.props.data.map(function (municipio) {
-      		return (
-      			<li> {municipio.municipio} </li>
-      		);
-    	});
+		var municipios = this.props.data.map(function (municipio) {
+			return (
+				<li> {municipio.municipio} </li>
+			)
+		});
+		var overview = function(state, data) {
+			if (state === false) {
+				return (
+					<h3> {data.length} </h3>
+				)
+			} else {
+				return (
+		      		<ul> {municipios} </ul>
+				)
+			}
+		};
     	return (
     		<div>
-    			<h3> Municipios </h3>
-		      	<ul className="listaDeMunicipios">
-		        	{listaDeMunicipios}
-		      	</ul>
-	      	</div>	
+    			<a href="#" onClick={this.details}>
+	    			<h3> Municipios </h3>
+    			</a>
+    			{overview(this.state.m, this.props.data)}
+    		</div>
 	    );
 	}
 });
 
-var Ciudades = React.createClass({
-	validateCity: function(city) {
-		if (city) {
-			return city.map(function (ciudad) {
-	      		return (
-	      			<h5> {ciudad} </h5>
-	      		);
-    		});
-		} else {
-			return (
-	      			<h5> N/A </h5>
-	      		);
-		}
+var Parroquias = React.createClass({
+	getInitialState: function(){
+		return {p:false}
+	},
+	details: function() {
+		this.setState({p: !this.state.p});
 	},
 	render: function() {
+		var overview = function(state, data) {
+			if (state === false) {
+				var total = 0;
+				data.map(function (municipio) {
+					total += municipio.parroquias.length;
+				})
+				return (
+					<h3>{total}</h3>
+				)
+			} else {
+				var total = data.map(function (municipio) {
+					return municipio.parroquias.map(function (parroquia) {
+						return (
+							<li>{parroquia}</li>
+						)
+					})
+				});
+				return (
+		      		<ul>{total}</ul>
+				)
+			}
+		};
 		return (
 			<div>
-				<h3> Ciudades </h3>
-				{this.validateCity(this.props.data)} 
+				<a href="#" onClick={this.details}>
+	    			<h3>Parroquias</h3>
+    			</a>
+				{overview(this.state.p, this.props.data)}
 			</div>	
 		)
 	}
@@ -70,7 +113,7 @@ $.ajax({
 	dataType: 'json',
 	success: function(data) {
 		console.log(data);
-	    React.render(<Estados data={data} />, 
+	    React.render(<Venezuela data={data} />, 
 	    	document.getElementById('content')
 				);
 	}.bind(this),
