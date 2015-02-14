@@ -21,7 +21,8 @@ var Venezuela = React.createClass({
 		return (
 			<div className="venezuela">
 			 	<div>
-			 		<h1>{this.props.data[this.state.n].estado}</h1>
+			 		<h1>{this.props.data[this.state.n].capital}</h1>
+			 		<h2>{this.props.data[this.state.n].estado}</h2>
 			 		<button type="button" onClick={this.goBack}>Anterior</button>
 					<button type="button" onClick={this.goForward}>Siguiente</button>
 				</div>
