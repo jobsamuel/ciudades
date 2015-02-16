@@ -45,20 +45,21 @@ gulp.task('watch', function() {
 
 // Precompile Facebook React JSX templates into JavaScript.
 gulp.task('js', function () {
-    return gulp.src('./public/jsx/main.jsx')
+    return gulp.src('./public/jsx/*.jsx')
         .pipe(react({harmony: true}))
         .pipe(gulp.dest('./build'));
 });
 
+// LESS compilator.
 gulp.task('less', function () {
-  gulp.src('./public/less/*.less')
+  gulp.src('./public/less/main.less')
     .pipe(less({
       paths: [ path.join(__dirname, 'less', 'includes') ]
     }))
     .pipe(gulp.dest('./public/css'));
 });
 
-// Static server
+// Static server.
 gulp.task('server', function(done) {
 	browserSync({
         server: {
