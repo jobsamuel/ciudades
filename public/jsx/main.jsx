@@ -1,3 +1,9 @@
+var React = require('react')
+,	mui = require('material-ui')
+,	venezuela = require('../venezuela.json')
+,	RaisedButton = mui.RaisedButton
+,	FlatButton = mui.FlatButton;
+
 var Venezuela = React.createClass({
 	getInitialState: function() {
 		return {n:0}
@@ -23,8 +29,8 @@ var Venezuela = React.createClass({
 			 	<div>
 			 		<h1>{this.props.data[this.state.n].capital}</h1>
 			 		<h2>{this.props.data[this.state.n].estado}</h2>
-			 		<button type="button" onClick={this.goBack}>Anterior</button>
-					<button type="button" onClick={this.goForward}>Siguiente</button>
+			 		<RaisedButton label="Anterior" onClick={this.goBack} primary={true} />
+					<RaisedButton label="Siguiente" onClick={this.goForward} secondary={true}/>
 				</div>
 				<Municipios data={this.props.data[this.state.n].municipios} />
 				<Parroquias data={this.props.data[this.state.n].municipios} />
@@ -59,9 +65,7 @@ var Municipios = React.createClass({
 		};
     	return (
     		<div>
-    			<a href="#" onClick={this.details}>
-	    			<h3> Municipios </h3>
-    			</a>
+    			<FlatButton label="Municipios" onClick={this.details}></FlatButton>
     			{overview(this.state.m, this.props.data)}
     		</div>
 	    );
@@ -100,25 +104,14 @@ var Parroquias = React.createClass({
 		};
 		return (
 			<div>
-				<a href="#" onClick={this.details}>
-	    			<h3>Parroquias</h3>
-    			</a>
+    			<FlatButton label="Parroquias" onClick={this.details}></FlatButton>
 				{overview(this.state.p, this.props.data)}
 			</div>	
 		)
 	}
 });
 
-$.ajax({
-	url: "venezuela.json",
-	dataType: 'json',
-	success: function(data) {
-		console.log(data);
-	    React.render(<Venezuela data={data} />, 
-	    	document.getElementById('content')
-				);
-	}.bind(this),
-	error: function(xhr, status, err) {
-		console.error(this.props.url, status, err.toString());
-	}.bind(this)
-});
+React.render(
+	<Venezuela data={venezuela} />, 
+	document.getElementById('content')
+);
