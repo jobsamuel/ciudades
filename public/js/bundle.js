@@ -1,9 +1,10 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"./build/main.js":[function(require,module,exports){
 var React = require('react')
 ,	mui = require('material-ui')
+,	Municipios = require('./municipios')
+,	Parroquias = require('./parroquias')
 ,	venezuela = require('../venezuela.json')
-,	RaisedButton = mui.RaisedButton
-,	FlatButton = mui.FlatButton;
+,	RaisedButton = mui.RaisedButton;
 
 var Venezuela = React.createClass({displayName: "Venezuela",
 	getInitialState: function() {
@@ -40,6 +41,15 @@ var Venezuela = React.createClass({displayName: "Venezuela",
 	}
 });
 
+React.render(
+	React.createElement(Venezuela, {data: venezuela}), 
+	document.getElementById('content')
+);
+},{"../venezuela.json":"/home/jobsamuel/Documents/Dev/ciudades/venezuela.json","./municipios":"/home/jobsamuel/Documents/Dev/ciudades/build/municipios.js","./parroquias":"/home/jobsamuel/Documents/Dev/ciudades/build/parroquias.js","material-ui":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/material-ui/lib/index.js","react":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/react/react.js"}],"/home/jobsamuel/Documents/Dev/ciudades/build/municipios.js":[function(require,module,exports){
+var React = require('react')
+,	mui = require('material-ui')
+,	FlatButton = mui.FlatButton;
+
 var Municipios = React.createClass({displayName: "Municipios",
 	getInitialState: function(){
 		return {m:false}
@@ -72,6 +82,12 @@ var Municipios = React.createClass({displayName: "Municipios",
 	    );
 	}
 });
+
+module.exports = Municipios;
+},{"material-ui":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/material-ui/lib/index.js","react":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/react/react.js"}],"/home/jobsamuel/Documents/Dev/ciudades/build/parroquias.js":[function(require,module,exports){
+var React = require('react')
+,	mui = require('material-ui')
+,	FlatButton = mui.FlatButton;
 
 var Parroquias = React.createClass({displayName: "Parroquias",
 	getInitialState: function(){
@@ -112,11 +128,8 @@ var Parroquias = React.createClass({displayName: "Parroquias",
 	}
 });
 
-React.render(
-	React.createElement(Venezuela, {data: venezuela}), 
-	document.getElementById('content')
-);
-},{"../venezuela.json":"/home/jobsamuel/Documents/Dev/ciudades/venezuela.json","material-ui":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/material-ui/lib/index.js","react":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/react/react.js"}],"/home/jobsamuel/Documents/Dev/ciudades/node_modules/browserify/node_modules/process/browser.js":[function(require,module,exports){
+module.exports = Parroquias;
+},{"material-ui":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/material-ui/lib/index.js","react":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/react/react.js"}],"/home/jobsamuel/Documents/Dev/ciudades/node_modules/browserify/node_modules/process/browser.js":[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -25696,7 +25709,7 @@ module.exports = warning;
 module.exports = require('./lib/React');
 
 },{"./lib/React":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/react/lib/React.js"}],"/home/jobsamuel/Documents/Dev/ciudades/venezuela.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=[
+module.exports=module.exports=module.exports=module.exports=module.exports=[
     {
         "iso_31662": "VE-X",
         "estado": "Amazonas",
