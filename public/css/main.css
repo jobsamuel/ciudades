@@ -744,7 +744,7 @@ hr {
 }
 .mui-app-bar {
   width: 100%;
-  background-color: #00bcd4;
+  background-color: #0288d1;
   z-index: 5;
 }
 .mui-app-bar .mui-paper-container {
@@ -810,7 +810,7 @@ hr {
   transition: opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, transform 0ms cubic-bezier(0.23, 1, 0.32, 1) 450ms;
 }
 .mui-checkbox .mui-checkbox-icon .mui-checkbox-check * {
-  fill: #00bcd4;
+  fill: #0288d1;
 }
 .mui-checkbox .mui-checkbox-icon .mui-checkbox-box {
   position: absolute;
@@ -830,14 +830,14 @@ hr {
   transition: all 100s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 .mui-checkbox.mui-is-switched .mui-checkbox-icon .mui-checkbox-box * {
-  fill: #00bcd4;
+  fill: #0288d1;
 }
 .mui-checkbox.mui-is-disabled .mui-checkbox-icon .mui-checkbox-check *,
 .mui-checkbox.mui-is-disabled .mui-checkbox-icon .mui-checkbox-box * {
   fill: rgba(0, 0, 0, 0.3);
 }
 .mui-checkbox.mui-is-required .mui-checkbox-icon .mui-checkbox-box * {
-  fill: #00bcd4;
+  fill: #0288d1;
 }
 .mui-date-picker-calendar {
   font-size: 12px;
@@ -940,7 +940,7 @@ hr {
 }
 .mui-date-picker-date-display .mui-date-picker-date-display-date {
   padding: 16px 0;
-  background-color: #00bcd4;
+  background-color: #0288d1;
   color: #ffffff;
 }
 .mui-date-picker-date-display .mui-date-picker-date-display-month,
@@ -1028,7 +1028,7 @@ hr {
   transform: scale(1);
 }
 .mui-date-picker-day-button.mui-is-current-date {
-  color: #00bcd4;
+  color: #0288d1;
 }
 .mui-dialog-window {
   position: fixed;
@@ -1232,7 +1232,7 @@ hr {
 }
 .mui-enhanced-switch.mui-is-switched .mui-focus-ripple-inner,
 .mui-enhanced-switch.mui-is-switched .mui-ripple-circle-inner {
-  background-color: rgba(0, 188, 212, 0.2);
+  background-color: rgba(2, 136, 209, 0.2);
 }
 .mui-enhanced-textarea .mui-enhanced-textarea-shadow,
 .mui-enhanced-textarea .mui-enhanced-textarea-input {
@@ -1287,30 +1287,30 @@ hr {
   background-color: inherit;
 }
 .mui-flat-button.mui-is-primary {
-  color: #ff4081;
+  color: #01579b;
 }
 .mui-flat-button.mui-is-primary:hover,
 .mui-flat-button.mui-is-primary.mui-is-keyboard-focused {
-  background-color: #ffe3ed;
+  background-color: #41abfe;
 }
 .mui-flat-button.mui-is-primary .mui-touch-ripple .mui-ripple-circle-inner {
-  background-color: rgba(255, 64, 129, 0.2);
+  background-color: rgba(1, 87, 155, 0.2);
 }
 .mui-flat-button.mui-is-primary .mui-focus-ripple .mui-focus-ripple-inner {
-  background-color: rgba(255, 64, 129, 0.2);
+  background-color: rgba(1, 87, 155, 0.2);
 }
 .mui-flat-button.mui-is-secondary {
-  color: #00bcd4;
+  color: #0288d1;
 }
 .mui-flat-button.mui-is-secondary:hover,
 .mui-flat-button.mui-is-secondary.mui-is-keyboard-focused {
-  background-color: #defbff;
+  background-color: #def3ff;
 }
 .mui-flat-button.mui-is-secondary .mui-touch-ripple .mui-ripple-circle-inner {
-  background-color: rgba(0, 188, 212, 0.2);
+  background-color: rgba(2, 136, 209, 0.2);
 }
 .mui-flat-button.mui-is-secondary .mui-focus-ripple .mui-focus-ripple-inner {
-  background-color: rgba(0, 188, 212, 0.2);
+  background-color: rgba(2, 136, 209, 0.2);
 }
 .mui-floating-action-button {
   display: inline-block;
@@ -1325,7 +1325,7 @@ hr {
   width: 56px;
   padding: 0;
   overflow: hidden;
-  background-color: #ff4081;
+  background-color: #01579b;
   border-radius: 50%;
   transform: translate3d(0, 0, 0);
 }
@@ -1340,7 +1340,7 @@ hr {
 }
 .mui-floating-action-button .mui-floating-action-button-container:hover,
 .mui-floating-action-button .mui-floating-action-button-container.mui-is-keyboard-focused {
-  background-color: #f30053;
+  background-color: #012c4f;
 }
 .mui-floating-action-button .mui-floating-action-button-icon {
   line-height: 56px;
@@ -1361,11 +1361,11 @@ hr {
   line-height: 40px;
 }
 .mui-floating-action-button.mui-is-secondary .mui-floating-action-button-container {
-  background-color: #00bcd4;
+  background-color: #0288d1;
 }
 .mui-floating-action-button.mui-is-secondary .mui-floating-action-button-container:hover,
 .mui-floating-action-button.mui-is-secondary .mui-floating-action-button-container.mui-is-keyboard-focused {
-  background-color: #00aac0;
+  background-color: #027bbd;
 }
 .mui-floating-action-button.mui-is-secondary .mui-floating-action-button-icon {
   color: #ffffff;
@@ -1741,7 +1741,7 @@ hr {
   width: 42px;
 }
 .mui-menu-item.mui-is-selected {
-  color: #ff4081;
+  color: #01579b;
 }
 .mui-overlay {
   position: fixed;
@@ -1817,7 +1817,7 @@ hr {
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 .mui-radio-button .mui-radio-button-icon .mui-radio-button-fill * {
-  fill: #00bcd4;
+  fill: #0288d1;
 }
 .mui-radio-button .mui-radio-button-icon .mui-radio-button-target {
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -1838,7 +1838,7 @@ hr {
   transform: scale(0);
 }
 .mui-radio-button.mui-is-switched .mui-radio-button-icon .mui-radio-button-target * {
-  fill: #00bcd4;
+  fill: #0288d1;
   transition: all 100s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 .mui-radio-button.mui-is-disabled .mui-radio-button-icon .mui-radio-button-fill *,
@@ -1846,7 +1846,7 @@ hr {
   fill: rgba(0, 0, 0, 0.3);
 }
 .mui-radio-button.mui-is-required .mui-radio-button-icon .mui-radio-button-target * {
-  fill: #00bcd4;
+  fill: #0288d1;
 }
 .mui-raised-button {
   display: inline-block;
@@ -1903,10 +1903,10 @@ hr {
   background-color: #e6e6e6;
 }
 .mui-raised-button.mui-is-primary .mui-raised-button-container {
-  background-color: #ff4081;
+  background-color: #01579b;
 }
 .mui-raised-button.mui-is-primary .mui-raised-button-container.mui-is-keyboard-focused {
-  background-color: #f30053;
+  background-color: #012c4f;
 }
 .mui-raised-button.mui-is-primary .mui-touch-ripple .mui-ripple-circle-inner {
   background-color: rgba(255, 255, 255, 0.5);
@@ -1918,13 +1918,13 @@ hr {
   color: #ffffff;
 }
 .mui-raised-button.mui-is-primary:hover .mui-raised-button-container {
-  background-color: #f30053;
+  background-color: #012c4f;
 }
 .mui-raised-button.mui-is-secondary .mui-raised-button-container {
-  background-color: #00bcd4;
+  background-color: #0288d1;
 }
 .mui-raised-button.mui-is-secondary .mui-raised-button-container.mui-is-keyboard-focused {
-  background-color: #00aac0;
+  background-color: #027bbd;
 }
 .mui-raised-button.mui-is-secondary .mui-touch-ripple .mui-ripple-circle-inner {
   background-color: rgba(255, 255, 255, 0.35);
@@ -1936,7 +1936,7 @@ hr {
   color: #ffffff;
 }
 .mui-raised-button.mui-is-secondary:hover .mui-raised-button-container {
-  background-color: #00aac0;
+  background-color: #027bbd;
 }
 .mui-focus-ripple {
   position: absolute;
@@ -2138,7 +2138,7 @@ hr {
   transition: left 0ms cubic-bezier(0.23, 1, 0.32, 1) 400ms, opacity 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, transform 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 .mui-snackbar .mui-snackbar-action {
-  color: #ff4081;
+  color: #01579b;
   float: right;
   margin-top: 6px;
   margin-right: -16px;
@@ -2162,7 +2162,7 @@ hr {
   margin: 0;
   height: 56px;
   line-height: 48px;
-  color: #00bcd4;
+  color: #0288d1;
   border-top: solid 1px #e0e0e0;
   padding-top: 8px;
   margin-top: 8px;
@@ -2291,7 +2291,7 @@ hr {
   margin: 0;
 }
 .mui-text-field .mui-text-field-focus-underline {
-  border-color: #00bcd4;
+  border-color: #0288d1;
   border-bottom-width: 2px;
   transform: scaleX(0);
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -2350,7 +2350,7 @@ hr {
 }
 .mui-text-field.mui-has-floating-labels.mui-is-focused .mui-text-field-floating-label {
   transform: scale(0.75) translate3d(0, -18px, 0);
-  color: #00bcd4;
+  color: #0288d1;
 }
 .mui-text-field.mui-has-floating-labels.mui-is-focused.mui-has-error .mui-text-field-floating-label {
   color: #f44336;
@@ -2391,11 +2391,11 @@ hr {
   left: -10px;
 }
 .mui-toggle.mui-is-switched .mui-toggle-icon .mui-toggle-track {
-  background-color: rgba(0, 188, 212, 0.5);
+  background-color: rgba(2, 136, 209, 0.5);
 }
 .mui-toggle.mui-is-switched .mui-toggle-icon .mui-toggle-thumb {
   left: 18px;
-  background-color: #00bcd4;
+  background-color: #0288d1;
 }
 .mui-toggle.mui-is-disabled .mui-toggle-icon {
   cursor: default;
@@ -2407,10 +2407,10 @@ hr {
   background-color: #bdbdbd;
 }
 .mui-toggle.mui-is-required .mui-toggle-icon .mui-toggle-track {
-  background-color: rgba(0, 188, 212, 0.5);
+  background-color: rgba(2, 136, 209, 0.5);
 }
 .mui-toggle.mui-is-required .mui-toggle-icon .mui-toggle-thumb {
-  background-color: #00bcd4;
+  background-color: #0288d1;
 }
 .mui-toolbar {
   background-color: #e1e1e1;
