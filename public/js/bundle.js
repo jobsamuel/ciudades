@@ -27,12 +27,20 @@ var Venezuela = React.createClass({displayName: "Venezuela",
 	render: function() {
 		console.log(this.state.n);
 		return (
-			React.createElement("div", {className: "venezuela"}, 
+			React.createElement("div", {className: "cities-main-container"}, 
 			 	React.createElement("div", null, 
 			 		React.createElement("h1", null, this.props.data[this.state.n].capital), 
 			 		React.createElement("h2", null, this.props.data[this.state.n].estado), 
-			 		React.createElement(RaisedButton, {label: "Anterior", onClick: this.goBack, primary: true}), 
-					React.createElement(RaisedButton, {label: "Siguiente", onClick: this.goForward, secondary: true})
+			 		React.createElement(RaisedButton, {
+			 			className: "cities-primary-button", 
+			 			label: "Anterior", 
+			 			onClick: this.goBack, 
+			 			primary: true}), 
+					React.createElement(RaisedButton, {
+						className: "cities-primary-button", 
+						label: "Siguiente", 
+						onClick: this.goForward, 
+						secondary: true})
 				), 
 				React.createElement(Municipios, {data: this.props.data[this.state.n].municipios}), 
 				React.createElement(Parroquias, {data: this.props.data[this.state.n].municipios})
@@ -48,6 +56,7 @@ React.render(
 },{"../venezuela.json":"/home/jobsamuel/Documents/Dev/ciudades/venezuela.json","./municipios":"/home/jobsamuel/Documents/Dev/ciudades/build/municipios.js","./parroquias":"/home/jobsamuel/Documents/Dev/ciudades/build/parroquias.js","material-ui":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/material-ui/lib/index.js","react":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/react/react.js"}],"/home/jobsamuel/Documents/Dev/ciudades/build/municipios.js":[function(require,module,exports){
 var React = require('react')
 ,	mui = require('material-ui')
+,	Paper = mui.Paper
 ,	FlatButton = mui.FlatButton;
 
 var Municipios = React.createClass({displayName: "Municipios",
@@ -60,23 +69,26 @@ var Municipios = React.createClass({displayName: "Municipios",
 	render: function() {
 		var municipios = this.props.data.map(function (municipio) {
 			return (
-				React.createElement("li", null, " ", municipio.municipio, " ")
+				React.createElement("h4", null, " ", municipio.municipio, " ")
 			)
 		});
 		var overview = function(state, data) {
 			if (state === false) {
 				return (
-					React.createElement("h3", null, " ", data.length, " ")
+					React.createElement("h2", null, " ", data.length, " ")
 				)
 			} else {
 				return (
-		      		React.createElement("ul", null, " ", municipios, " ")
+		      		React.createElement(Paper, {zDepth: 1}, " ", municipios, " ")
 				)
 			}
 		};
     	return (
-    		React.createElement("div", null, 
-    			React.createElement(FlatButton, {label: "Municipios", onClick: this.details}), 
+    		React.createElement("div", {className: "cities-details", zDepth: 1}, 
+    			React.createElement(FlatButton, {
+    				className: "cities-secondary-button", 
+    				label: "Municipios", 
+    				onClick: this.details}), 
     			overview(this.state.m, this.props.data)
     		)
 	    );
@@ -87,6 +99,7 @@ module.exports = Municipios;
 },{"material-ui":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/material-ui/lib/index.js","react":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/react/react.js"}],"/home/jobsamuel/Documents/Dev/ciudades/build/parroquias.js":[function(require,module,exports){
 var React = require('react')
 ,	mui = require('material-ui')
+,	Paper = mui.Paper
 ,	FlatButton = mui.FlatButton;
 
 var Parroquias = React.createClass({displayName: "Parroquias",
@@ -104,24 +117,27 @@ var Parroquias = React.createClass({displayName: "Parroquias",
 					total += municipio.parroquias.length;
 				})
 				return (
-					React.createElement("h3", null, total)
+					React.createElement("h2", null, total)
 				)
 			} else {
 				var total = data.map(function (municipio) {
 					return municipio.parroquias.map(function (parroquia) {
 						return (
-							React.createElement("li", null, parroquia)
+							React.createElement("h4", null, parroquia)
 						)
 					})
 				});
 				return (
-		      		React.createElement("ul", null, total)
+		      		React.createElement(Paper, {zDepth: 1}, total)
 				)
 			}
 		};
 		return (
-			React.createElement("div", null, 
-    			React.createElement(FlatButton, {label: "Parroquias", onClick: this.details}), 
+			React.createElement("div", {className: "cities-details"}, 
+    			React.createElement(FlatButton, {
+    				className: "cities-secondary-button", 
+    				label: "Parroquias", 
+    				onClick: this.details}), 
 				overview(this.state.p, this.props.data)
 			)	
 		)
@@ -25709,7 +25725,7 @@ module.exports = warning;
 module.exports = require('./lib/React');
 
 },{"./lib/React":"/home/jobsamuel/Documents/Dev/ciudades/node_modules/react/lib/React.js"}],"/home/jobsamuel/Documents/Dev/ciudades/venezuela.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports=[
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=[
     {
         "iso_31662": "VE-X",
         "estado": "Amazonas",

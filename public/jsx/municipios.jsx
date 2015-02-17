@@ -1,5 +1,6 @@
 var React = require('react')
 ,	mui = require('material-ui')
+,	Paper = mui.Paper
 ,	FlatButton = mui.FlatButton;
 
 var Municipios = React.createClass({
@@ -12,23 +13,26 @@ var Municipios = React.createClass({
 	render: function() {
 		var municipios = this.props.data.map(function (municipio) {
 			return (
-				<li> {municipio.municipio} </li>
+				<h4> {municipio.municipio} </h4>
 			)
 		});
 		var overview = function(state, data) {
 			if (state === false) {
 				return (
-					<h3> {data.length} </h3>
+					<h2> {data.length} </h2>
 				)
 			} else {
 				return (
-		      		<ul> {municipios} </ul>
+		      		<Paper zDepth={1}> {municipios} </Paper>
 				)
 			}
 		};
     	return (
-    		<div>
-    			<FlatButton label="Municipios" onClick={this.details}></FlatButton>
+    		<div className="cities-details" zDepth={1}>
+    			<FlatButton 
+    				className="cities-secondary-button" 
+    				label="Municipios" 
+    				onClick={this.details} />
     			{overview(this.state.m, this.props.data)}
     		</div>
 	    );

@@ -1,5 +1,6 @@
 var React = require('react')
 ,	mui = require('material-ui')
+,	Paper = mui.Paper
 ,	FlatButton = mui.FlatButton;
 
 var Parroquias = React.createClass({
@@ -17,24 +18,27 @@ var Parroquias = React.createClass({
 					total += municipio.parroquias.length;
 				})
 				return (
-					<h3>{total}</h3>
+					<h2>{total}</h2>
 				)
 			} else {
 				var total = data.map(function (municipio) {
 					return municipio.parroquias.map(function (parroquia) {
 						return (
-							<li>{parroquia}</li>
+							<h4>{parroquia}</h4>
 						)
 					})
 				});
 				return (
-		      		<ul>{total}</ul>
+		      		<Paper zDepth={1}>{total}</Paper>
 				)
 			}
 		};
 		return (
-			<div>
-    			<FlatButton label="Parroquias" onClick={this.details}></FlatButton>
+			<div className="cities-details">
+    			<FlatButton 
+    				className="cities-secondary-button" 
+    				label="Parroquias" 
+    				onClick={this.details} />
 				{overview(this.state.p, this.props.data)}
 			</div>	
 		)
