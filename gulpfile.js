@@ -8,7 +8,8 @@ var gulp = require('gulp')
 ,	buffer = require('vinyl-buffer')
 ,	watchify = require('watchify')
 ,	browserify = require('browserify')
-,	browserSync = require('browser-sync');
+,	browserSync = require('browser-sync')
+, uglify = require('gulp-uglify');
 
 var bundler = watchify(browserify('./build/main.js', watchify.args));
 
@@ -26,7 +27,7 @@ function bundle() {
       .pipe(buffer())
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./public/js'))
+    .pipe(gulp.dest('./build/dist'))
  	.pipe(browserSync.reload({stream:true}));
 }
 
@@ -37,7 +38,7 @@ gulp.task('watch', function() {
 	
 	// Javascript & JSX.
 	gulp.watch('./public/jsx/*.jsx', ['js']);
-	gulp.watch('./build/*.js', ['browserify']);
+	gulp.watch('./build/*.js', ['browserify', 'compressjs']);
 
 	// LESS
 	gulp.watch('./public/less/*.less', ['less']);
@@ -48,6 +49,13 @@ gulp.task('js', function () {
     return gulp.src('./public/jsx/*.jsx')
         .pipe(react({harmony: true}))
         .pipe(gulp.dest('./build'));
+});
+
+// Compress JavaScript.
+gulp.task('compressjs', function() {
+  return gulp.src('./build/dist/bundle.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('./public/js'));
 });
 
 // LESS compilator.
