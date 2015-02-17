@@ -24,7 +24,6 @@ var Venezuela = React.createClass({
 		}
 	},
 	render: function() {
-		console.log(this.state.n);
 		return (
 			<div className="cities-main-container">
 			 	<div>
