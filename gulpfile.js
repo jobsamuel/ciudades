@@ -9,7 +9,8 @@ var gulp = require('gulp')
 ,	watchify = require('watchify')
 ,	browserify = require('browserify')
 ,	browserSync = require('browser-sync')
-, uglify = require('gulp-uglify');
+, uglify = require('gulp-uglify')
+, minify = require('gulp-minify-css');
 
 var bundler = watchify(browserify('./build/main.js', watchify.args));
 
@@ -37,11 +38,10 @@ gulp.task('default', ['server', 'watch']);
 gulp.task('watch', function() {
 	
 	// Javascript & JSX.
-	gulp.watch('./public/jsx/*.jsx', ['js']);
-	gulp.watch('./build/*.js', ['browserify', 'compressjs']);
+	gulp.watch('./public/jsx/*.jsx', ['js', 'browserify', 'uglify']);
 
-	// LESS
-	gulp.watch('./public/less/*.less', ['less']);
+	// LESS & CSS
+	gulp.watch('./public/less/*.less', ['less', 'minify']);
 });
 
 // Precompile Facebook React JSX templates into JavaScript.
@@ -51,8 +51,11 @@ gulp.task('js', function () {
         .pipe(gulp.dest('./build'));
 });
 
+// JavaScript bundle dependencies.
+gulp.task('browserify', ['js'], bundle);
+
 // Compress JavaScript.
-gulp.task('compressjs', function() {
+gulp.task('uglify', ['browserify'], function() {
   return gulp.src('./build/dist/bundle.js')
     .pipe(uglify())
     .pipe(gulp.dest('./public/js'));
@@ -64,6 +67,13 @@ gulp.task('less', function () {
     .pipe(less({
       paths: [ path.join(__dirname, 'less', 'includes') ]
     }))
+    .pipe(gulp.dest('./build/dist'));
+});
+
+// Compress CSS.
+gulp.task('minify', ['less'], function() {
+  gulp.src('./build/dist/*.css')
+    .pipe(minify({keepSpecialComments:0}))
     .pipe(gulp.dest('./public/css'))
     .pipe(browserSync.reload({stream:true}));
 });
@@ -76,6 +86,3 @@ gulp.task('server', function(done) {
         }
     });
 });
-
-// Bundle dependencies.
-gulp.task('browserify', bundle);
