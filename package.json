@@ -1,11 +1,11 @@
 {
   "name": "ciudades",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Ciudades y Estados Venezolanos renderizados con React.",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp"
+    "start": "gulp server"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "browser-sync": "^2.0.1",
     "browserify": "^8.1.3",
     "gulp": "^3.8.11",
+    "gulp-htmlmin": "^1.1.0",
     "gulp-less": "^3.0.0",
     "gulp-minify-css": "^0.4.5",
     "gulp-react": "^2.0.0",

@@ -3,9 +3,10 @@
 > Ciudades y Estados Venezolanos renderizados con [React](http://facebook.github.io/react/)
 
 # uso
-
+	
+	$ git clone git@github.com:jobsamuel/ciudades.git
 	$ npm install
-	$ npm start
+	$ gulp
 
 # licencia
 

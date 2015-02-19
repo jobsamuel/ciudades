@@ -10,9 +10,10 @@ var gulp = require('gulp')
 ,	browserify = require('browserify')
 ,	browserSync = require('browser-sync')
 , uglify = require('gulp-uglify')
-, minify = require('gulp-minify-css');
+, minify = require('gulp-minify-css')
+, htmlmin = require('gulp-htmlmin');
 
-var bundler = watchify(browserify('./build/main.js', watchify.args));
+var bundler = watchify(browserify('./build/temp/main.js', watchify.args));
 
 bundler.transform('brfs');
 
@@ -28,38 +29,38 @@ function bundle() {
       .pipe(buffer())
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./build/dist'))
+    .pipe(gulp.dest('./public/js'))
  	.pipe(browserSync.reload({stream:true}));
 }
 
 gulp.task('default', ['server', 'watch']);
+gulp.task('build', ['uglify', 'minify', 'htmlmin'], function() {
+  browserSync({
+        server: {
+            baseDir: "./build/dist"
+        }
+    });
+});
 
 // Watch files for any changes.
 gulp.task('watch', function() {
 	
 	// Javascript & JSX.
-	gulp.watch('./public/jsx/*.jsx', ['js', 'browserify', 'uglify']);
+	gulp.watch('./public/jsx/*.jsx', ['js', 'browserify']);
 
-	// LESS & CSS
-	gulp.watch('./public/less/*.less', ['less', 'minify']);
+	// LESS
+	gulp.watch('./public/less/*.less', ['less']);
 });
 
 // Precompile Facebook React JSX templates into JavaScript.
 gulp.task('js', function () {
     return gulp.src('./public/jsx/*.jsx')
         .pipe(react({harmony: true}))
-        .pipe(gulp.dest('./build'));
+        .pipe(gulp.dest('./build/temp'));
 });
 
 // JavaScript bundle dependencies.
 gulp.task('browserify', ['js'], bundle);
-
-// Compress JavaScript.
-gulp.task('uglify', ['browserify'], function() {
-  return gulp.src('./build/dist/bundle.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('./public/js'));
-});
 
 // LESS compilator.
 gulp.task('less', function () {
@@ -67,15 +68,29 @@ gulp.task('less', function () {
     .pipe(less({
       paths: [ path.join(__dirname, 'less', 'includes') ]
     }))
-    .pipe(gulp.dest('./build/dist'));
+    .pipe(gulp.dest('./public/css'))
+    .pipe(browserSync.reload({stream:true}));
+});
+
+// Compress JavaScript.
+gulp.task('uglify', function() {
+  return gulp.src('./public/js/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('./build/dist/js'));
 });
 
 // Compress CSS.
-gulp.task('minify', ['less'], function() {
-  gulp.src('./build/dist/*.css')
+gulp.task('minify', function() {
+  gulp.src('./public/css/*.css')
     .pipe(minify({keepSpecialComments:0}))
-    .pipe(gulp.dest('./public/css'))
-    .pipe(browserSync.reload({stream:true}));
+    .pipe(gulp.dest('./build/dist/css'));
+});
+
+// Compress HTML
+gulp.task('htmlmin', function() {
+  gulp.src('./public/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('./build/dist'));
 });
 
 // Static server.

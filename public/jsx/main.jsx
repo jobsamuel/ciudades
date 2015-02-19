@@ -2,7 +2,7 @@ var React = require('react')
 ,	mui = require('material-ui')
 ,	Municipios = require('./municipios')
 ,	Parroquias = require('./parroquias')
-,	venezuela = require('../venezuela.json')
+,	venezuela = require('../../venezuela.json')
 ,	RaisedButton = mui.RaisedButton;
 
 var Venezuela = React.createClass({
